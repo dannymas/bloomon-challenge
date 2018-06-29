@@ -6,7 +6,11 @@
  * Add a bouquet spec if it doesn't exist.
  * @param {Object} bouquetSpec
  */
-exports.add = function(bouquetSpec) {
+export function add(bouquetSpec) {
   // @TODO complete this
   throw new Error('Not implemented')
+}
+
+export const bouquetSpecStore = {
+  add,
 }

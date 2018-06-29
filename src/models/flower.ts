@@ -2,16 +2,17 @@
  * Flower.
  * @class
  */
-class Flower {
+export class Flower {
   /**
    * Default constructor.
    * @param {string} name
    * @param {string} size
    */
-  constructor(name, size) {
+  name: string
+  size: string
+
+  constructor(name: string, size: string) {
     this.name = name
     this.size = size
   }
 }
-
-module.exports = Flower

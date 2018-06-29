@@ -1,6 +1,6 @@
-const { parseBouquetSpecLine, parseFlowerLine } = require('./parser')
+import { parseBouquetSpecLine, parseFlowerLine } from './parser'
 
-module.exports = (bouquetSpecStore, flowerStore, readline) => {
+export const controller = (bouquetSpecStore, flowerStore, readline) => {
   /**
    * Bouquet specs are input first, then flowers.
    */

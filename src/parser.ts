@@ -1,12 +1,12 @@
-const BouquetSpec = require('./models/bouquet-spec')
-const Flower = require('./models/flower')
+import { BouquetSpec } from './models/bouquet-spec'
+import { Flower } from './models/flower'
 
 /**
  * Validate and parse bouquet spec.
  * @param {string} line
  * @return {?BouquetSpec} new BouquetSpec or null if line is invalid
  */
-exports.parseBouquetSpecLine = function(line) {
+export function parseBouquetSpecLine(line) {
   // @TODO complete this
   throw new Error('Not implemented')
 }
@@ -16,7 +16,12 @@ exports.parseBouquetSpecLine = function(line) {
  * @param {string} line
  * @return {?Flower} new Flower or null if line is invalid
  */
-exports.parseFlowerLine = function(line) {
+export function parseFlowerLine(line) {
   // @TODO complete this
   throw new Error('Not implemented')
+}
+
+export const parser = {
+  parseFlowerLine,
+  parseBouquetSpecLine,
 }
