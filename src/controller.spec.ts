@@ -29,6 +29,12 @@ const FailingFlowerStoreMock = {
 
 const ProcessMock = {
   exit: jest.fn(),
+  stderr: {
+    write: jest.fn(),
+  },
+  stdout: {
+    write: jest.fn(),
+  },
 }
 
 const ReadlineMock = {
@@ -56,9 +62,9 @@ describe('controller works', () => {
   })
 
   it('works', () => {
-    jest.spyOn(ReadlineMock, 'write')
+    jest.spyOn(ProcessMock.stdout, 'write')
     input.split('\n').forEach((i) => instance.processLine(i))
-    expect(ReadlineMock.write).toHaveBeenCalledWith('AL2a is ready!\n')
+    expect(ProcessMock.stdout.write).toHaveBeenCalledWith('AL2a is ready!\n')
   })
 })
 
