@@ -7,7 +7,7 @@
     "lint": "tslint -p .",
     "prestart": "tsc -p .",
     "start": "node ./dist/index.js",
-    "test": "jest",
+    "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "repository": {
