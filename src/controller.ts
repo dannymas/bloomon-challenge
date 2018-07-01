@@ -20,7 +20,7 @@ export const controller = (bouquetSpecStore: BouquetSpecStore, flowerStore: Flow
       const { size, name, flowers } = spec
       if (Object.keys(flowers).every((flower) => storage[`${flower}${size}`] >= flowers[flower])) {
         Object.keys(flowers).forEach((flower) => storage[`${flower}${size}`] -= flowers[flower])
-        readline.write(`${spec.spec} is ready!\n`)
+        process.stdout.write(`${spec.spec} is ready!\n`)
       }
     }
   }
@@ -54,7 +54,7 @@ export const controller = (bouquetSpecStore: BouquetSpecStore, flowerStore: Flow
       const flower = parseFlowerLine(line)
       flowerStore.add(flower!)
     } catch (e) {
-      readline.write(e)
+      process.stderr.write(e + '\n')
       process.exit(1)
     }
   }
