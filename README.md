@@ -1,4 +1,16 @@
 # Bloomon Code Challenge
+
+## Implementation
+
+See the following asciinema for an execution recording.
+
+[![asciicast](https://asciinema.org/a/nhiafLwm9ZHAlXOIf1AYIpOZW.png)](https://asciinema.org/a/nhiafLwm9ZHAlXOIf1AYIpOZW)
+
+Codebase was migrated to TypeScript/Jest and it has a full coverage:
+
+![coverage](images/coverage.png "Coverage")
+
+
 ## Challenge description
 Bloomon has a production facility that produces bouquets. We simplified how the real one -- located in Aalsmeer -- works, for the purposes of this Code Challenge:
 
