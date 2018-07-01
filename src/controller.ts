@@ -1,6 +1,9 @@
-import { parseBouquetSpecLine, parseFlowerLine } from './parser'
+import { ReadLine } from 'readline'
 
-export const controller = (bouquetSpecStore, flowerStore, readline) => {
+import { parseBouquetSpecLine, parseFlowerLine } from './parser'
+import { BouquetSpecStore, FlowerStore } from './stores'
+
+export const controller = (bouquetSpecStore: BouquetSpecStore, flowerStore: FlowerStore, readline: ReadLine, process: NodeJS.Process) => {
   /**
    * Bouquet specs are input first, then flowers.
    */
@@ -10,8 +13,16 @@ export const controller = (bouquetSpecStore, flowerStore, readline) => {
    * Produce a bouquet from the available flowers, if possible.
    */
   function outputBouquet() {
-    // @TODO complete this and use `readline.write`
-    throw new Error('Not implemented')
+    const specs = bouquetSpecStore.specs
+    const storage = flowerStore.storage
+
+    for (const spec of specs) {
+      const { size, name, flowers } = spec
+      if (Object.keys(flowers).every((flower) => storage[`${flower}${size}`] >= flowers[flower])) {
+        Object.keys(flowers).forEach((flower) => storage[`${flower}${size}`] -= flowers[flower])
+        readline.write(`${spec.spec} is ready!\n`)
+      }
+    }
   }
 
   /**
@@ -35,19 +46,20 @@ export const controller = (bouquetSpecStore, flowerStore, readline) => {
       }
 
       const bouquetSpec = parseBouquetSpecLine(line)
-      if (bouquetSpec) {
-        bouquetSpecStore.add(bouquetSpec)
-      }
+      bouquetSpecStore.add(bouquetSpec!)
       return
     }
 
-    const flower = parseFlowerLine(line)
-    if (flower) {
-      flowerStore.add(flower)
+    try {
+      const flower = parseFlowerLine(line)
+      flowerStore.add(flower!)
+    } catch (e) {
+      readline.write(e)
+      process.exit(1)
     }
   }
 
   return {
-    processLine
+    processLine,
   }
 }

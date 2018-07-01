@@ -1,4 +1,4 @@
-import { Flower } from "./flower"
+import { IStorageMapping } from './storage-mapping'
 
 /**
  * Bouquet spec.
@@ -7,15 +7,18 @@ import { Flower } from "./flower"
 export class BouquetSpec {
   /**
    * Default constructor.
+   * @param {string} spec
    * @param {string} name
    * @param {string} size
    * @param {Object} flowers Map of flower name to quantity.
    */
-  name: string
-  size: number
-  flowers: Flower[]
+  public spec: string
+  public name: string
+  public size: string
+  public flowers: IStorageMapping
 
-  constructor(name, size, flowers) {
+  constructor(spec: string, name: string, size: string, flowers: IStorageMapping) {
+    this.spec = spec
     this.name = name
     this.size = size
     this.flowers = flowers

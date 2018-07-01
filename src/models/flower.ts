@@ -8,8 +8,8 @@ export class Flower {
    * @param {string} name
    * @param {string} size
    */
-  name: string
-  size: string
+  public name: string
+  public size: string
 
   constructor(name: string, size: string) {
     this.name = name
